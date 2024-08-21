@@ -24,7 +24,7 @@
 <script src="js/animations.js"></script>
 <!--背景音乐-->
 <div class="audio-container">
-    <audio id="bg-music" preload="auto">
+    <audio id="bg-music" preload="auto" loop>
         <source src="assets/bgMusic.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -33,25 +33,6 @@
         <button id="pause-btn">暂停</button>
     </div>
 </div>
-<script>
-    document.getElementById('play-btn').addEventListener('click', function() {
-        var audio = document.getElementById('bg-music');
-        if (audio.paused) {
-            audio.play().then(function() {
-                console.log('Audio playing');
-            }).catch(function(error) {
-                console.error('Error playing audio:', error);
-            });
-        }
-    });
-
-    document.getElementById('pause-btn').addEventListener('click', function() {
-        var audio = document.getElementById('bg-music');
-        if (!audio.paused) {
-            audio.pause();
-            console.log('Audio paused');
-        }
-    });
-</script>
+<script src="js/audio.js"></script>
 </body>
 </html>
