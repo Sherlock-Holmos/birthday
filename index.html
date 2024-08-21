@@ -23,8 +23,35 @@
 <!-- 祝福语动画 -->
 <script src="js/animations.js"></script>
 <!--背景音乐-->
-<audio autoplay="autoplay" loop="loop" controls="controls">
-    <source src="assets/bgMusic.mp3" type="audio/mpeg">
-</audio>
+<div class="audio-container">
+    <audio id="bg-music" preload="auto">
+        <source src="assets/bgMusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="custom-controls">
+        <button id="play-btn">Play</button>
+        <button id="pause-btn">Pause</button>
+    </div>
+</div>
+<script>
+    document.getElementById('play-btn').addEventListener('click', function() {
+        var audio = document.getElementById('bg-music');
+        if (audio.paused) {
+            audio.play().then(function() {
+                console.log('Audio playing');
+            }).catch(function(error) {
+                console.error('Error playing audio:', error);
+            });
+        }
+    });
+
+    document.getElementById('pause-btn').addEventListener('click', function() {
+        var audio = document.getElementById('bg-music');
+        if (!audio.paused) {
+            audio.pause();
+            console.log('Audio paused');
+        }
+    });
+</script>
 </body>
 </html>

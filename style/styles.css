@@ -73,3 +73,32 @@ img#logo {
     width: 100%;
     font-weight: bold;
 }
+
+/* 播放器 */
+.audio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* 高度调整为视口高度 */
+    background: transparent; /* 使容器背景透明 */
+}
+
+.custom-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-controls button {
+    background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.custom-controls button:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
