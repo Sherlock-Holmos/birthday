@@ -77,6 +77,7 @@ img#logo {
 /* 播放器 */
 .audio-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 10vh; /* 高度调整为视口高度 */
@@ -89,6 +90,7 @@ img#logo {
 }
 
 .custom-controls button {
+    margin-top: 2vh;
     background: rgba(255, 255, 255, 0.3); /* 半透明背景 */
     border: none;
     border-radius: 5px;
@@ -101,4 +103,8 @@ img#logo {
 .custom-controls button:hover {
     background: rgba(255, 255, 255, 0.6);
     transform: scale(1.1);
+}
+
+audio {
+    display: none;
 }
