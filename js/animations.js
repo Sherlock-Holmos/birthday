@@ -2,7 +2,6 @@ var S = {
     init: function () {
         S.Drawing.init('.canvas');
         document.body.classList.add('body--ready');
-        //想说的话
         S.UI.simulate("吉吉|祝你|18岁|生日|快乐!|#countdown 3|#rectangle 15x15|#circle 12 |#time");
         S.Drawing.loop(function () {
             S.Shape.render();
