@@ -1,5 +1,4 @@
 function showFireworks() {
-    console.log("showFireworks called"); // 确保函数被调用
     const canvas = document.createElement('canvas');
     canvas.id = 'fireworksCanvas';
     document.body.appendChild(canvas);
