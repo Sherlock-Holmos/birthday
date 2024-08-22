@@ -116,3 +116,33 @@ img#logo {
     cursor: pointer;
     z-index: 10000;  /* 确保按钮位于顶层 */
 }
+
+/* 卡牌 */
+.quote-container {
+    position: fixed;
+    bottom: 20px; /* 调整距离底部的距离 */
+    left: 20px;   /* 调整距离左侧的距离 */
+    z-index: 1000; /* 确保图标在其他元素之上 */
+}
+
+.quote-icon {
+    font-size: 30px; /* 调整图标大小 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 15px; /* 增加内边距，使点击区域更大 */
+    border-radius: 50%; /* 圆形图标 */
+    background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 背景雾化效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影，增加层次感 */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.quote-icon:active {
+    transform: scale(0.9); /* 点击时缩小 */
+}
+
+.quote-icon:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* 悬停时背景颜色变化 */
+}
