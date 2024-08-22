@@ -106,11 +106,6 @@ S.UI = (function () {
                         if (index === 0) {
                             if (sequence.length === 0) {
                                 S.Shape.switchShape(S.ShapeBuilder.letter(''));
-                                try {
-                                    showFireworks();
-                                } catch (error) {
-                                    console.error("Error showing fireworks:", error);
-                                }
                             } else {
                                 performAction(sequence);
                             }
