@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>记忆墙</title>
+    <title>照片墙</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,7 +42,7 @@
             .attr("width", width)
             .attr("height", height);
 
-        d3.json("popular.json", function(error, data) {
+        d3.json("assets/photos/popular.json", function(error, data) {
             if (error) throw error;
 
             data = data.map(function(d) {
