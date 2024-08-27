@@ -1,272 +1,340 @@
 <!DOCTYPE html>
-<html lang="en" ondragstart="return false">
- 
+<html lang="en">
 <head>
-      <meta charset="UTF-8">
-      <meta name="Keywords" content="">
-      <meta name="Description" content="">
-      <title>3D旋转照片墙</title>
-      <style type="text/css">
-            /* 去掉默认效果 */
-            * {
-                  margin: 0;
-                  padding: 0;
-            }
- 
-            body {
-                  background: #222;
-                  overflow: hidden;
-                  /* 取消选中 */
-                  user-select: none;
- 
-            }
- 
-            @keyframes rotate {
-                  100% {
-                        transform: rotateY(360deg);
-                  }
-            }
- 
-            .perspective {
-                  /*子元素透视 场景深度*/
-                  perspective: 600px;
-            }
- 
-            .wrap {
-                  /* 3d */
-                  width: 135px;
-                  height: 240px;
-                  margin: 100px auto;
-                  position: relative;
-                  /* border: 1px solid red; */
-                  transform: rotateX(-20deg) rotateY(0deg);
-                  transform-style: preserve-3d;
- 
-            }
- 
-            .wrap img {
-                  display: block;
-                  /* 绝对定位 */
-                  position: absolute;
-                  width: 100%;
-                  height: 100%;
-                  transform: rotateY(0deg) translateZ(0px);
-                  background: transparent;
-                  box-shadow: 0 0 4px #fff;
-                  border-radius: 5px;
- 
-                  /* webkit */
-            }
- 
-            /* 照片底座 */
-            .wrap p {
-                  width: 1200px;
-                  height: 1200px;
-                  background: -webkit-radial-gradient(center center, 600px 600px, rgba(122, 122, 122, .5), rgba(0, 0, 0, 0));
-                  position: absolute;
-                  border-radius: 50%;
-                  left: 50%;
-                  top: 100%;
-                  margin-left: -600px;
-                  margin-top: -600px;
-                  /* 沿着x轴按倒 */
-                  transform: rotateX(90deg);
- 
-            }
-      </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      /* 禁止滚动 */
+      overflow: hidden;
+      /* 触摸设备上浏览器不会对触摸事件做任何处理，所有触摸事件都会被忽略 */
+      touch-action: none;
+      /* 禁止选中 */
+      user-select: none;
+      /* 清空所有状态 */
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+    }
+    body {
+      /* 控制好摄像头位置 */
+      perspective: 500px;
+      perspective-origin: center;
+    }
+    .box {
+      transform-style: preserve-3d;
+      height: 100%;
+      /* 倾斜一点 */
+      transform: rotateX(-30deg);
+    }
+    .box-imgs {
+      transform-style: preserve-3d;
+      /* 用于内部图片坐标全部归零，好进行布局 */
+      position: relative;
+      /* 为了居中 */
+      margin: auto;
+      /* 这里的宽高是为了给下面 img 的宽高 100% 用的，可以调整去掉，设置到图片本身上去 */
+      width: 120px;
+      height: 140px;
+      /* 自动旋转 */
+      animation: autoRotate 200s infinite linear;
+    }
+    .box-imgs:not(:first-child) {
+      margin-top: 6px;
+    }
+    .box-imgs img {
+      transform-style: preserve-3d;
+      /* 坐标归零 */
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .box-imgs:last-child img {
+      /* 倒影，如果有多层照片叠加，可以考虑只设置最底下一排有倒影 */
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+    }
+    @keyframes autoRotate {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
 </head>
- 
 <body>
-      <!-- 盒子容器 -->
-      <div class="perspective">
-            <div class="wrap" id="imgwrap">
-                  <!-- 引入图片值页面 -->
-                  <img class="f1" src="img/12.png" />
-                  <img class="f1" src="img/13.png" />
-                  <img class="f1" src="img/14.png" />
-                  <img class="f1" src="img/15.png" />
-                  <img class="f1" src="img/16.png" />
-                  <img class="f1" src="img/1.png" />
-                  <img class="f1" src="img/2.png" />
-                  <img class="f1" src="img/3.png" />
-                  <img class="f1" src="img/4.png" />
-                  <img class="f1" src="img/5.png" />
-                  <img class="f1" src="img/6.png" />
-                  <img class="f1" src="img/7.png" />
-                  <img class="f1" src="img/5.png" />
-                  <img class="f1" src="img/6.png" />
-                  <img class="f1" src="img/7.png" />
-                  <img class="f1" src="img/8.png" />
-                  <img class="f1" src="img/9.png" />
-                  <img class="f1" src="img/10.png" />
-                  <img class="f1" src="img/11.png" />
- 
-                  <img class="f1" src="img/17.png" />
-                  <img class="f1" src="img/18.png" />
-                  <img class="f1" src="img/19.png" />
-                  <img class="f1" src="img/20.png" />
-                  <img class="f1" src="img/21.png" />
-                  <img class="f1" src="img/22.png" />
-                  <img class="f1" src="img/23.png" />
-                  <img class="f1" src="img/24.png" />
-                  <img class="f1" src="img/25.png" />
-                  <img class="f1" src="img/26.png" />
-                  <img class="f1" src="img/27.png" />
-                  <img class="f1" src="img/28.png" />
-                  <img class="f1" src="img/29.png" />
-                  <img class="f1" src="img/30.png" />
- 
-                  <!-- 引入图片值页面 -->
-                  <img class="f2" src="img/1.png" />
-                  <img class="f2" src="img/2.png" />
-                  <img class="f2" src="img/3.png" />
-                  <img class="f2" src="img/4.png" />
-                  <img class="f2" src="img/5.png" />
- 
-                  <img class="f2" src="img/9.png" />
-                  <img class="f2" src="img/10.png" />
-                  <img class="f2" src="img/11.png" />
-                  <img class="f2" src="img/12.png" />
-                  <img class="f2" src="img/25.png" />
-                  <img class="f2" src="img/26.png" />
-                  <img class="f2" src="img/27.png" />
-                  <img class="f2" src="img/28.png" />
-                  <img class="f2" src="img/29.png" />
-                  <img class="f2" src="img/30.png" />
-                  <img class="f2" src="img/13.png" />
-                  <img class="f2" src="img/14.png" />
-                  <img class="f2" src="img/15.png" />
-                  <img class="f2" src="img/16.png" />
-                  <img class="f2" src="img/17.png" />
-                  <img class="f2" src="img/18.png" />
-                  <img class="f2" src="img/19.png" />
-                  <img class="f2" src="img/20.png" />
-                  <img class="f2" src="img/21.png" />
-                  <img class="f2" src="img/22.png" />
-                  <img class="f2" src="img/23.png" />
-                  <img class="f2" src="img/24.png" />
-                  <img class="f2" src="img/6.png" />
-                  <img class="f2" src="img/7.png" />
-                  <img class="f2" src="img/5.png" />
-                  <img class="f2" src="img/6.png" />
-                  <img class="f2" src="img/7.png" />
-                  <img class="f2" src="img/8.png" />
-                  <!-- 引入图片值页面 -->
- 
-                  <img class="f3" src="img/1.png" />
-                  <img class="f3" src="img/2.png" />
-                  <img class="f3" src="img/11.png" />
-                  <img class="f3" src="img/12.png" />
-                  <img class="f3" src="img/25.png" />
-                  <img class="f3" src="img/26.png" />
-                  <img class="f3" src="img/27.png" />
-                  <img class="f3" src="img/3.png" />
-                  <img class="f3" src="img/4.png" />
-                  <img class="f3" src="img/5.png" />
- 
- 
-                  <img class="f3" src="img/16.png" />
-                  <img class="f3" src="img/17.png" />
-                  <img class="f3" src="img/18.png" />
-                  <img class="f3" src="img/10.png" />
- 
-                  <img class="f3" src="img/28.png" />
-                  <img class="f3" src="img/29.png" />
-                  <img class="f3" src="img/30.png" />
-                  <img class="f3" src="img/13.png" />
- 
-                  <img class="f3" src="img/19.png" />
-                  <img class="f3" src="img/20.png" />
-                  <img class="f3" src="img/21.png" />
-                  <img class="f3" src="img/22.png" />
-                  <img class="f3" src="img/23.png" />
-                  <img class="f3" src="img/24.png" />
-                  <img class="f3" src="img/9.png" />
-                  <img class="f3" src="img/14.png" />
-                  <img class="f3" src="img/15.png" />
-                  <img class="f3" src="img/6.png" />
-                  <img class="f3" src="img/7.png" />
-                  <img class="f3" src="img/5.png" />
-                  <img class="f3" src="img/6.png" />
-                  <img class="f3" src="img/7.png" />
-                  <img class="f3" src="img/8.png" />
- 
- 
-                  <p></p>
-            </div>
-      </div>
-      <!--  src="JS/photo.js" -->
-      <script type="text/javascript">
-            var oImg = document.getElementsByClassName('f1')
-            var oImg2 = document.getElementsByClassName('f2')
-            var oImg3 = document.getElementsByClassName('f3')
-            var len = oImg.length;
-            console.log(len)
-            var deg = 360 / len;
- 
-            var oWrap = document.getElementById("imgwrap");
-            // var oWrap=document.querySelector('.wrap');
- 
-            //页面加载完毕在执行的代码
-            window.onload = function () {
-                  Array.prototype.forEach.call(oImg, function (ele, index, self) {
-                        // 旋转并沿Z轴平移
-                        ele.style.transform = "rotateY(" + deg * index + "deg) translateZ(645.75px)";
-                        //过渡时间1s
-                        ele.style.transition = "1s " + (len - index) * 0.1 + "s";
- 
-                  });
-                  Array.prototype.forEach.call(oImg2, function (ele, index, self) {
-                        // 旋转并沿Z轴平移
-                        ele.style.transform = "rotateY(" + deg * index + "deg) translateZ(645.75px) translateY(240px)";
-                        //过渡时间1s
-                        ele.style.transition = "1s " + (len - index) * 0.1 + "s";
- 
-                  });
-                  Array.prototype.forEach.call(oImg3, function (ele, index, self) {
-                        // 旋转并沿Z轴平移
-                        ele.style.transform = "rotateY(" + deg * index + "deg) translateZ(645.75px) translateY(480px)";
-                        //过渡时间1s
-                        ele.style.transition = "1s " + (len - index) * 0.1 + "s";
- 
-                  });
-                  // Array.prototype.forEach.call(oImg, function (ele, index, self) {
-                  //       // 旋转并沿Z轴平移
-                  //       ele.style.transform = "rotateY(" + deg * index + "deg) translateZ(350px)";
-                  //       //过渡时间1s
-                  //       ele.style.transition = "1s " + (len - index) * 0.1 + "s";
- 
-                  // });
- 
-            }
-            //翻动3D相册
-            var newX, newY, lastX, lastY, minusX, minusY, rotX = -20, rotY = 0;
- 
-            document.onmousedown = function (e) {
-                  // 点击设置初值
-                  lastX = e.clientX;
-                  lastY = e.clientY;
- 
-                  this.onmousemove = function (e) {
-                        newX = e.clientX;
-                        newY = e.clientY;
-                        minusX = newX - lastX;
-                        minusY = newY - lastY;
- 
-                        rotX -= minusY * 0.2;
-                        rotY += minusX * 0.1;
-                        oWrap.style.transform = "rotateX(" + rotX + "deg) rotateY(" + rotY + "deg)";
-                        lastX = newX;
-                        lastY = newY;
- 
-                  }
-                  this.onmouseup = function (e) {
-                        //鼠标松开
-                        this.onmousemove = null;//清除鼠标移动
-                  }
-            }
- 
-      </script>
+  <!-- 父容器 -->
+  <div class="box" id="box">
+    <!-- 第一排 -->
+    <div class="box-imgs" id="box-imgs1">
+      <!-- 第一排中的图片 -->
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+    </div>
+    <!-- 第二排 -->
+    <div class="box-imgs" id="box-imgs2">
+      <!-- 第二排中的图片 -->
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+    </div>
+    <!-- 第三排 -->
+    <div class="box-imgs" id="box-imgs3">
+      <!-- 第三排中的图片 -->
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+    </div>
+    <!-- 第四排 -->
+    <div class="box-imgs" id="box-imgs4">
+      <!-- 第四排中的图片 -->
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+      <img src="img/1.webp">
+      <img src="img/2.webp">
+      <img src="img/3.webp">
+      <img src="img/4.webp">
+      <img src="img/6.webp">
+      <img src="img/7.webp">
+      <img src="img/8.webp">
+    </div>
+  </div>
+  <script>
+
+    // =================================================== 入门示例 - 正常自动旋转
+
+    // 照片墙圆弧半径
+    let radius = 560;
+    // 每排容器
+    let boxImgs1 = document.getElementById('box-imgs1');
+    let boxImgs2 = document.getElementById('box-imgs2');
+    let boxImgs3 = document.getElementById('box-imgs3');
+    let boxImgs4 = document.getElementById('box-imgs4');
+    // 每排容器中的所有图片
+    let imgs1 = Array.from(boxImgs1.getElementsByTagName('img'))
+    let imgs2 = Array.from(boxImgs2.getElementsByTagName('img'))
+    let imgs3 = Array.from(boxImgs3.getElementsByTagName('img'))
+    let imgs4 = Array.from(boxImgs4.getElementsByTagName('img'))
+    // 设置圆弧倾斜角度
+    function setStyle(dom, i, len, delayTime) {
+      dom.style.transform = `rotateY(${i * (360 / len)}deg) translateZ(${radius}px)`;
+      // 缩放调整额外在追加一些动画
+      // dom.style.transition = 'transform 1s';
+      // dom.style.transitionDelay = `${delayTime || (len - i) / 4}s`
+    }
+    // 刷新一遍位置
+    function reloadStyle() {
+      for (let i = 0; i < imgs1.length; i++) {
+        setStyle(imgs1[i], i, imgs1.length, 0)
+      }
+      for (let i = 0; i < imgs2.length; i++) {
+        setStyle(imgs2[i], i, imgs2.length, 0)
+      }
+      for (let i = 0; i < imgs3.length; i++) {
+        setStyle(imgs3[i], i, imgs3.length, 0)
+      }
+      for (let i = 0; i < imgs4.length; i++) {
+        setStyle(imgs4[i], i, imgs4.length, 0)
+      }
+    }
+    // 初始化一遍
+    reloadStyle()
+
+
+    // =================================================== 升级示例 - 鼠标缩放（注释即失效）
+
+    // 鼠标滚轮 || 触摸板上下滚动，不要使用捏合手势，浏览器内容默认会被放大
+    document.onmousewheel = function (e) {
+      // 获取捏合数值
+      e || e.window.event
+      const num = e.wheelDelta / 20 || -e.detail
+      // 在原基础上调整角度数值
+      radius += num
+      // 重新布局
+      reloadStyle()
+    }
+
+    // =================================================== 升级示例 - 鼠标拖拽（注释即失效）
+
+    // 拖拽容器
+    let dragBox = document.getElementById('box')
+    // 初始化坐标参数
+    let startX,
+        startY,
+        endX,
+        endY,
+        tX = 0,
+        tY = 10,
+        desX = 0,
+        desY = 0
+    // 鼠标按下
+    document.onpointerdown = function (e) {
+      // 清楚惯性定时器
+      clearInterval(dragBox.timer)
+      // 鼠标点击位置
+      e = e || ewindow.event
+      startX = e.clientX
+      startY = e.clientY
+      // 停止自动旋转
+      playAutoRotate(false)
+      // 鼠标移动
+      this.onpointermove = function (e) {
+        // 记录结束时位置
+        e = e || window.event
+        endX = e.clientX
+        endY = e.clientY
+        // 计算移动距离并修改角度
+        desX = endX - startX
+        desY = endY - startY
+        tX += desX * 0.1
+        tY += desY * 0.1
+        // 设置角度
+        changeDragBoxRotate()
+        // 记录
+        startX = endX
+        startY = endY
+      }
+      // 鼠标抬起
+      this.onpointerup = function (e) {
+        // 添加惯性旋转
+        dragBox.timer = setInterval(function () {
+          // 计算惯性
+          desX *= 0.95
+          desY *= 0.95
+          tX += desX * 0.1
+          tY += desY * 0.1
+          // 设置惯性角度
+          changeDragBoxRotate()
+          // 惯性数值不能大于指定数值，免的滚太多
+          if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+            // 清空定时器
+            clearInterval(dragBox.timer)
+            // 开启自动旋转
+            playAutoRotate(true)
+          }
+        })
+        // 清空
+        this.onpointermove = this.onpointerup = null
+      }
+      return false
+    }
+    // 修改拖拽角度
+    function changeDragBoxRotate() {
+      // X轴旋转 0 - 180 度
+      if (tY > 180) { tY = 180 }
+      if (tY < 0) { tY = 0 }
+      // Y 轴旋转角度不限制
+      dragBox.style.transform = `rotateX(${-tY}deg) rotateY(${tX}deg)`
+    }
+    // 控制旋转状态
+    function playAutoRotate (isPlay) {
+      // 状态
+      const status = isPlay ? 'running' : 'paused'
+      // 任意控制一层
+      boxImgs2.style.animationPlayState = status
+      boxImgs4.style.animationPlayState = status
+    }
+  </script>
 </body>
- 
 </html>
