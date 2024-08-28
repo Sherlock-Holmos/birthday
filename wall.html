@@ -66,6 +66,22 @@
         transform: rotateY(360deg);
       }
     }
+    .audio-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10;
+    }
+    .audio-controls button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -331,10 +347,37 @@
     function playAutoRotate (isPlay) {
       // 状态
       const status = isPlay ? 'running' : 'paused'
-      // 任意控制一层
+      // 任意控制一层6
       boxImgs2.style.animationPlayState = status
       boxImgs4.style.animationPlayState = status
     }
   </script>
+  <!-- 添加音频控件 -->
+  <div class="audio-controls">
+    <button id="play-btn">播放音乐</button>
+    <button id="pause-btn">暂停音乐</button>
+  </div>
+  
+  <!-- 背景音乐 -->
+  <audio id="background-audio" loop>
+    <source src="assets/所念皆星河.mp3" type="audio/mpeg">
+    您的浏览器不支持 HTML 音频播放。
+  </audio>
+  <script>
+    // 初始化背景音乐
+    const audio = document.getElementById('background-audio');
+    const playBtn = document.getElementById('play-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+
+    // 播放音乐
+    playBtn.onclick = function() {
+      audio.play();
+    }
+
+    // 暂停音乐
+    pauseBtn.onclick = function() {
+      audio.pause();
+    }
+  </script>
 </body>
-</html>
+</html>6
