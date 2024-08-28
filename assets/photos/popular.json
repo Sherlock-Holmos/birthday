@@ -1,5 +1,0 @@
-[
-    { "filename": "image1.jpg", "trackers": 100 },
-    { "filename": "image2.jpg", "trackers": 150 },
-    { "filename": "image3.jpg", "trackers": 120 }
-]
