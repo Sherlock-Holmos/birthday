@@ -1,217 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>照片墙</title>
-  <style>
-    html, body {
-      /* 禁止滚动 */
-      overflow: hidden;
-      /* 触摸设备上浏览器不会对触摸事件做任何处理，所有触摸事件都会被忽略 */
-      touch-action: none;
-      /* 禁止选中 */
-      user-select: none;
-      /* 清空所有状态 */
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-    }
-    body {
-      /* 控制好摄像头位置 */
-      perspective: 500px;
-      perspective-origin: center;
-    }
-    .box {
-      transform-style: preserve-3d;
-      height: 100%;
-      /* 倾斜一点 */
-      transform: rotateX(-30deg);
-    }
-    .box-imgs {
-      transform-style: preserve-3d;
-      /* 用于内部图片坐标全部归零，好进行布局 */
-      position: relative;
-      /* 为了居中 */
-      margin: auto;
-      /* 这里的宽高是为了给下面 img 的宽高 100% 用的，可以调整去掉，设置到图片本身上去 */
-      width: 120px;
-      height: 140px;
-      /* 自动旋转 */
-      animation: autoRotate 200s infinite linear;
-    }
-    .box-imgs:not(:first-child) {
-      margin-top: 6px;
-    }
-    .box-imgs img {
-      transform-style: preserve-3d;
-      /* 坐标归零 */
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .box-imgs:last-child img {
-      /* 倒影，如果有多层照片叠加，可以考虑只设置最底下一排有倒影 */
-      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
-    }
-    @keyframes autoRotate {
-      from {
-        transform: rotateY(0deg);
-      }
-      to {
-        transform: rotateY(360deg);
-      }
-    }
-    .audio-controls {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      z-index: 10;
-    }
-    .audio-controls button {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-    /* 返回按钮样式 */
-    .back-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 10;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-/* 信封样式 */
-.envelope {
-  position: absolute;
-  top: -100px; /* 初始位置在视图上方 */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140px; /* 信封宽度 */
-  height: 90px; /* 信封高度 */
-  background-color: #FFF;
-  border: 2px solid #333;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  cursor: pointer; /* 鼠标悬停显示为可点击 */
-  animation: fall-swing 4s ease-in-out forwards; /* forwards 属性使动画结束后保留最后状态 */
-  overflow: hidden; /* 确保内容显示在信封内 */
-  transition: transform 1s ease; /* 动画效果 */
-  animation-delay: 10s; /* 动画延迟10秒开始 */
-}
-
-/* 信封折痕 */
-.envelope::after {
-  content: '';
-  position: absolute;
-  top: 45%; /* 折痕位置在信封中间 */
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #333; /* 折痕颜色 */
-  z-index: 5; /* 确保折痕在信封主体内但低于封口 */
-}
-
-/* 信封封口三角形 */
-.envelope::before {
-  content: '';
-  position: absolute;
-  top: -20px; /* 调整位置使其位于信封上方 */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 70px solid transparent; /* 左边的透明边框 */
-  border-right: 70px solid transparent; /* 右边的透明边框 */
-  border-bottom: 40px solid #FFF; /* 底部的白色三角形 */
-  border-top: 10px solid #333; /* 顶部边缘的颜色 */
-  z-index: 15; /* 使三角形在信封上方 */
-}
-
-/* 红色封章 */
-.seal {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
-  background-color: red;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px #B22222; /* 模拟边缘阴影效果 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: bold;
-  z-index: 20; /* 保证封章在所有元素的上方 */
-}
-
-/* 信纸容器 */
-.letter {
-  position: fixed; /* 使信纸固定在视口中 */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #FFF;
-  border: 1px solid #333;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* 初始不可见 */
-  transform: scale(0); /* 初始缩放为0 */
-  transition: opacity 1s ease, transform 1s ease; /* 动画效果 */
-  z-index: 100; /* 确保信纸在页面顶层 */
-}
-
-/* 信封的飘落动画 */
-@keyframes fall-swing {
-  0% {
-    top: -100px;
-    transform: translateX(-50%) rotate(0deg); /* 初始位置 */
-    opacity: 0; /* 初始不可见 */
-  }
-  20% {
-    transform: translateX(-60px) rotate(-15deg); /* 左侧摇摆 */
-    opacity: 0.5; /* 开始出现 */
-  }
-  40% {
-    transform: translateX(60px) rotate(15deg); /* 右侧摇摆 */
-    opacity: 1; /* 完全可见 */
-  }
-  60% {
-    transform: translateX(-30px) rotate(-10deg); /* 左侧摇摆减小 */
-  }
-  80% {
-    transform: translateX(30px) rotate(10deg); /* 右侧摇摆减小 */
-  }
-  100% {
-    top: calc(100vh - 90px); /* 最终位置在页面底部稍上方 */
-    transform: translateX(-50%) rotate(0deg); /* 回到初始旋转角度 */
-    opacity: 1; /* 保持完全可见 */
-  }
-}
-  </style>
+  <link rel="stylesheet" href="style/wallstyle.css">
 </head>
+
 <body>
   <!-- 返回按钮 -->
   <button class="back-button" onclick="goBack()">返回</button>
@@ -349,7 +145,6 @@
     </div>
   </div>
   <script>
-
     // =================================================== 入门示例 - 正常自动旋转
 
     // 照片墙圆弧半径
@@ -409,13 +204,13 @@
     let dragBox = document.getElementById('box')
     // 初始化坐标参数
     let startX,
-        startY,
-        endX,
-        endY,
-        tX = 0,
-        tY = 10,
-        desX = 0,
-        desY = 0
+      startY,
+      endX,
+      endY,
+      tX = 0,
+      tY = 10,
+      desX = 0,
+      desY = 0
     // 鼠标按下
     document.onpointerdown = function (e) {
       // 清楚惯性定时器
@@ -470,13 +265,17 @@
     // 修改拖拽角度
     function changeDragBoxRotate() {
       // X轴旋转 0 - 180 度
-      if (tY > 180) { tY = 180 }
-      if (tY < 0) { tY = 0 }
+      if (tY > 180) {
+        tY = 180
+      }
+      if (tY < 0) {
+        tY = 0
+      }
       // Y 轴旋转角度不限制
       dragBox.style.transform = `rotateX(${-tY}deg) rotateY(${tX}deg)`
     }
     // 控制旋转状态
-    function playAutoRotate (isPlay) {
+    function playAutoRotate(isPlay) {
       // 状态
       const status = isPlay ? 'running' : 'paused'
       // 任意控制一层6
@@ -489,7 +288,7 @@
     <button id="play-btn">播放音乐</button>
     <button id="pause-btn">暂停音乐</button>
   </div>
-  
+
   <!-- 背景音乐 -->
   <audio id="background-audio" loop>
     <source src="assets/所念皆星河.mp3" type="audio/mpeg">
@@ -506,12 +305,12 @@
     const pauseBtn = document.getElementById('pause-btn');
 
     // 播放音乐
-    playBtn.onclick = function() {
+    playBtn.onclick = function () {
       audio.play();
     }
 
     // 暂停音乐
-    pauseBtn.onclick = function() {
+    pauseBtn.onclick = function () {
       audio.pause();
     }
 
@@ -521,7 +320,8 @@
   </script>
   <div class="envelope" id="envelope" onclick="onEnvelopeClick()">
     <div class="seal">封</div>
-    </div>
+  </div>
   </div>
 </body>
+
 </html>

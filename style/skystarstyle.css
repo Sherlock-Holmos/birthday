@@ -1,7 +1,8 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 body {
     height: 100vh;
     display: flex;
@@ -11,84 +12,102 @@ body {
     overflow: hidden;
     perspective: 1300px;
 }
+
 #videofilm {
     width: 100%;
     height: auto;
     position: fixed;
     z-index: -1;
-  }
-  h1{
+}
+
+h1 {
     font-size: 36px;
     color: #B1BCE6;
     font-family: '楷体';
-  }
+}
+
 .texttwo {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%);
 }
+
 .textone {
     position: absolute;
     left: 50%;
     top: 40%;
     transform: translateX(-50%);
 }
+
 .textthree {
     position: absolute;
     left: 50%;
     top: 60%;
     transform: translateX(-50%);
 }
+
 :root {
     --margin-top: 0;
     --margin-left: 0;
     --animation-duration: 0s;
     --animation-delay: 0s;
 }
+
 div {
     transform-style: preserve-3d;
 }
+
 .word-box,
-.word-box .word{
-position: absolute;
-animation: rotY 0s linear infinite;
-animation-duration: var(--animation-duration);
-animation-delay: var(--animation-delay);
+.word-box .word {
+    position: absolute;
+    animation: rotY 0s linear infinite;
+    animation-duration: var(--animation-duration);
+    animation-delay: var(--animation-delay);
 }
-.word-box{
+
+.word-box {
     margin-top: var(--margin-top);
 }
-.word-box .word{
+
+.word-box .word {
     margin-left: var(--margin-left);
 }
+
 .word-box .word {
     animation-duration: reverse;
 }
+
 @keyframes rotY {
-    to{
+    to {
         transform: rotateY(360deg);
     }
-    
+
 }
 
 /* 返回按钮样式 */
 #backButton {
     position: fixed;
-    top: 20px; /* 距离页面顶部的距离 */
-    left: 20px; /* 距离页面左侧的距离 */
+    top: 20px;
+    /* 距离页面顶部的距离 */
+    left: 20px;
+    /* 距离页面左侧的距离 */
     padding: 10px 20px;
-    background-color: #333; /* 按钮背景颜色 */
-    color: #fff; /* 按钮文字颜色 */
+    background-color: #333;
+    /* 按钮背景颜色 */
+    color: #fff;
+    /* 按钮文字颜色 */
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    z-index: 1000; /* 确保按钮在其他元素之上 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-  }
-  
-  #backButton:hover {
-    background-color: #555; /* 鼠标悬停时背景颜色 */
-  }
-  
+    z-index: 1000;
+    /* 确保按钮在其他元素之上 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 阴影效果 */
+}
+
+#backButton:hover {
+    background-color: #555;
+    /* 鼠标悬停时背景颜色 */
+}

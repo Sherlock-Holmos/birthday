@@ -1,6 +1,7 @@
 html {
     height: 100%;
 }
+
 body {
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     background: #ca8fce;
@@ -10,9 +11,11 @@ body {
     letter-spacing: 1.2px;
     margin: 0;
 }
+
 a {
     color: #f5ebf7;
 }
+
 .body--ready {
     background: -webkit-linear-gradient(top, rgb(235, 203, 223) 0%, rgb(192, 55, 117) 120%);
     background: -moz-linear-gradient(top, rgb(235, 203, 223) 0%, rgb(192, 55, 117) 120%);
@@ -20,16 +23,19 @@ a {
     background: -ms-linear-gradient(top, rgb(235, 203, 223) 0%, rgb(192, 55, 117) 120%);
     background: linear-gradient(top, rgb(235, 203, 223) 0%, rgb(192, 55, 117) 120%);
 }
+
 .text {
     position: fixed;
     bottom: 100px;
     text-align: center;
     width: 100%;
 }
+
 .canvas {
     margin: 0 auto;
     display: block;
 }
+
 img#logo {
     width: 128px;
     background-size: cover;
@@ -42,16 +48,22 @@ img#logo {
     margin-bottom: 20px;
     transition: all 1.0s;
 }
+
 #logo:hover {
     box-shadow: 0 0 10px #fff;
     -webkit-box-shadow: 0 0 19px #fff;
     transform: rotate(360deg);
-    -ms-transform: rotate(360deg); /* IE 9 */
-    -moz-transform: rotate(360deg); /* Firefox */
-    -webkit-transform: rotate(360deg); /* Safari 和 Chrome */
-    -o-transform: rotate(360deg); /* Opera */
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    -moz-transform: rotate(360deg);
+    /* Firefox */
+    -webkit-transform: rotate(360deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(360deg);
+    /* Opera */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
+
 .cs {
     width: 100%;
     height: 100%;
@@ -59,6 +71,7 @@ img#logo {
     position: absolute;
     text-align: center;
 }
+
 .text {
     position: fixed;
     bottom: 80px;
@@ -66,6 +79,7 @@ img#logo {
     width: 100%;
     font-weight: bold;
 }
+
 .text-right {
     position: fixed;
     bottom: 50px;
@@ -77,31 +91,42 @@ img#logo {
 /* 播放器 */
 .audio-container {
     position: fixed;
-    bottom: 20px; /* 调整距离底部的距离 */
-    right: 20px;  /* 调整距离右侧的距离 */
-    z-index: 1000; /* 确保图标在其他元素之上 */
+    bottom: 20px;
+    /* 调整距离底部的距离 */
+    right: 20px;
+    /* 调整距离右侧的距离 */
+    z-index: 1000;
+    /* 确保图标在其他元素之上 */
 }
 
 .music-icon {
-    font-size: 30px; /* 调整图标大小 */
+    font-size: 30px;
+    /* 调整图标大小 */
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 15px; /* 增加内边距，使点击区域更大 */
-    border-radius: 50%; /* 圆形图标 */
-    background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
-    backdrop-filter: blur(10px); /* 背景雾化效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影，增加层次感 */
+    padding: 15px;
+    /* 增加内边距，使点击区域更大 */
+    border-radius: 50%;
+    /* 圆形图标 */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色背景 */
+    backdrop-filter: blur(10px);
+    /* 背景雾化效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 添加阴影，增加层次感 */
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .music-icon:active {
-    transform: scale(0.9); /* 点击时缩小 */
+    transform: scale(0.9);
+    /* 点击时缩小 */
 }
 
 .music-icon:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* 悬停时背景颜色变化 */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 悬停时背景颜色变化 */
 }
 
 /* 烟花特效 */
@@ -114,35 +139,47 @@ img#logo {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 10000;  /* 确保按钮位于顶层 */
+    z-index: 10000;
+    /* 确保按钮位于顶层 */
 }
 
 /* 卡牌 */
 .quote-container {
     position: fixed;
-    bottom: 20px; /* 调整距离底部的距离 */
-    left: 20px;   /* 调整距离左侧的距离 */
-    z-index: 1000; /* 确保图标在其他元素之上 */
+    bottom: 20px;
+    /* 调整距离底部的距离 */
+    left: 20px;
+    /* 调整距离左侧的距离 */
+    z-index: 1000;
+    /* 确保图标在其他元素之上 */
 }
 
 .quote-icon {
-    font-size: 30px; /* 调整图标大小 */
+    font-size: 30px;
+    /* 调整图标大小 */
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 15px; /* 增加内边距，使点击区域更大 */
-    border-radius: 50%; /* 圆形图标 */
-    background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
-    backdrop-filter: blur(10px); /* 背景雾化效果 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影，增加层次感 */
+    padding: 15px;
+    /* 增加内边距，使点击区域更大 */
+    border-radius: 50%;
+    /* 圆形图标 */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色背景 */
+    backdrop-filter: blur(10px);
+    /* 背景雾化效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 添加阴影，增加层次感 */
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .quote-icon:active {
-    transform: scale(0.9); /* 点击时缩小 */
+    transform: scale(0.9);
+    /* 点击时缩小 */
 }
 
 .quote-icon:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* 悬停时背景颜色变化 */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 悬停时背景颜色变化 */
 }

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>今晚，整片星空将为你一人闪烁</title>
-    <style>
-      
 
-    </style>
-    <link rel="stylesheet" href="css/skystar.css">
-  </head>
-  <body>
-    <video id="videofilm" poster="img/skystar2.jpg" autoplay muted loop>
-      <source src="video/skystar.mp4" type="video/mp4">
-    </video>
-    <div class="textone">
-      <h1>May the stars shine brightly upon your path</h1>
-    </div>
-    <div class="texttwo">
-      <h1>guide u towards endless happiness and success</h1>
-    </div>
-    <div class="textthree">
-      <h1></h1>
-    </div>
-    <audio src="video/晴天.mp3" autoplay loop></audio>
-    
-    <div class="container"></div>
-    <script src="js/skystar.js"></script>
-    
-    <!-- 返回按钮 -->
-    <button id="backButton" onclick="goBack()">返回</button>
-  </body>
-  <script>
-    // 返回按钮点击事件处理
-    function goBack() {
-      window.history.back(); // 返回到上一页
-    }
-  </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今晚，整片星空将为你一人闪烁</title>
+  <link rel="stylesheet" href="style/skystarstyle.css">
+</head>
+
+<body>
+  <video id="videofilm" poster="img/skystar.jpg" autoplay muted loop>
+    <source src="assets/skystar.mp4" type="video/mp4">
+  </video>
+  <div class="textone">
+    <h1>May the stars shine brightly upon your path</h1>
+  </div>
+  <div class="texttwo">
+    <h1>guide u towards endless happiness and success</h1>
+  </div>
+  <div class="textthree">
+    <h1></h1>
+  </div>
+  <audio src="assets/晴天.mp3" autoplay loop></audio>
+
+  <div class="container"></div>
+  <script src="js/skystar.js"></script>
+
+  <!-- 返回按钮 -->
+  <button id="backButton" onclick="goBack()">返回</button>
+</body>
+<script>
+  // 返回按钮点击事件处理
+  function goBack() {
+    window.history.back(); // 返回到上一页
+  }
+</script>
+
 </html>
