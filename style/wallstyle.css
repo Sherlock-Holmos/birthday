@@ -123,8 +123,6 @@ body {
   animation: fall-swing 4s ease-in-out forwards;
   /* forwards 属性使动画结束后保留最后状态 */
   overflow: hidden;
-  /* 确保内容显示在信封内 */
-  transition: transform 1s ease;
   /* 动画效果 */
   animation-delay: 10s;
   /* 动画延迟10秒开始 */
@@ -186,31 +184,6 @@ body {
   font-weight: bold;
   z-index: 20;
   /* 保证封章在所有元素的上方 */
-}
-
-/* 信纸容器 */
-.letter {
-  position: fixed;
-  /* 使信纸固定在视口中 */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #FFF;
-  border: 1px solid #333;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  /* 初始不可见 */
-  transform: scale(0);
-  /* 初始缩放为0 */
-  transition: opacity 1s ease, transform 1s ease;
-  /* 动画效果 */
-  z-index: 100;
-  /* 确保信纸在页面顶层 */
 }
 
 /* 信封的飘落动画 */
