@@ -256,3 +256,17 @@ body {
     /* 保持完全可见 */
   }
 }
+
+/* 播放/暂停按钮样式 */
+#toggle-play-btn {
+    font-size: 24px; /* 按钮字体大小 */
+    background-color: transparent; /* 按钮背景透明 */
+    border: none; /* 去除按钮边框 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+    outline: none; /* 去除焦点边框 */
+    position: fixed; /* 固定在某个位置 */
+    bottom: 20px; /* 距离底部的距离 */
+    right: 20px; /* 距离右边的距离 */
+    z-index: 1000; /* 确保按钮在所有元素之上 */
+  }
+  

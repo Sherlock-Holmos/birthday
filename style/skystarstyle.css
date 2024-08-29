@@ -85,29 +85,30 @@ div {
 
 }
 
-/* 返回按钮样式 */
-#backButton {
-    position: fixed;
-    top: 20px;
-    /* 距离页面顶部的距离 */
-    left: 20px;
-    /* 距离页面左侧的距离 */
-    padding: 10px 20px;
-    background-color: #333;
-    /* 按钮背景颜色 */
-    color: #fff;
-    /* 按钮文字颜色 */
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 1000;
-    /* 确保按钮在其他元素之上 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* 阴影效果 */
-}
+/* 播放/暂停按钮样式 */
+#toggle-play-btn {
+    font-size: 24px; /* 按钮字体大小 */
+    background-color: transparent; /* 按钮背景透明 */
+    border: none; /* 去除按钮边框 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+    outline: none; /* 去除焦点边框 */
+    position: fixed; /* 固定在某个位置 */
+    bottom: 20px; /* 距离底部的距离 */
+    right: 20px; /* 距离右边的距离 */
+    z-index: 1000; /* 确保按钮在所有元素之上 */
+  }
 
-#backButton:hover {
-    background-color: #555;
-    /* 鼠标悬停时背景颜色 */
+/* 返回按钮样式 */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
 }
